@@ -1,6 +1,7 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import { Link, Button, Grid, Stack, Text, Flex, Image } from '@chakra-ui/react';
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
 import { Product } from '../product/types';
 import api from '../product/api';
@@ -18,6 +19,7 @@ function parseCurrency(value: number): string {
 
 const IndexRoute: React.FC<Props> = ({ products }) => {
   const [cart, setCart] = React.useState<Product[]>([]);
+  // const [selectedImage, setSelectedImage] = React.useState<string>(null);
   const text = React.useMemo(
     () =>
       cart
@@ -37,6 +39,7 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
   );
 
   return (
+    // <AnimateSharedLayout>
     <Stack spacing={6}>
       <Grid gridGap={6} templateColumns="repeat(auto-fill, minmax(240px, 1fr))">
         {products.map((product) => (
@@ -51,8 +54,12 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
             key={product.id}
           >
             <Image
+              alt={product.title}
+              as={motion.img}
+              cursor="pointer"
+              layoutId={product.image}
               borderRadius={8}
-              maxHeight={250}
+              maxHeight={200}
               objectFit="cover"
               src={product.image}
             />
@@ -81,7 +88,7 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
           <Button
             width="fit-content"
             as={Link}
-            href={`https://wa.me/43534534535?text=${encodeURIComponent(text)}`}
+            href={`https://wa.me/543487229164?text=${encodeURIComponent(text)}`}
             isExternal
             colorScheme="whatsapp"
           >
@@ -90,6 +97,7 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
         </Flex>
       )}
     </Stack>
+    // </AnimateSharedLayout>
   );
 };
 
