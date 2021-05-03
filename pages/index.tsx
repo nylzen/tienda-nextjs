@@ -39,9 +39,9 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
     [cart]
   );
 
-  React.useEffect(() => {
-    setTimeout(() => setCart([]), 5000);
-  }, [cart]);
+  // React.useEffect(() => {
+  //   setTimeout(() => setCart([]), 5000);
+  // }, [cart]);
 
   return (
     <AnimateSharedLayout type="crossfade">
@@ -75,9 +75,6 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
               <Stack spacing={1}>
                 <Text>{product.title}</Text>
                 <Text>{parseCurrency(product.price)}</Text>
-                <Text paddingBottom={5} paddingTop={5}>
-                  {parseCurrency(product.description)}
-                </Text>
               </Stack>
               <Button
                 onClick={() => setCart((cart) => cart.concat(product))}
