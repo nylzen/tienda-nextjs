@@ -40,7 +40,7 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
   );
 
   React.useEffect(() => {
-    setTimeout(() => setCart([]), 2000);
+    setTimeout(() => setCart([]), 5000);
   }, [cart]);
 
   return (
@@ -105,7 +105,11 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
                   text
                 )}`}
                 isExternal
+                size="lg"
                 colorScheme="whatsapp"
+                leftIcon={
+                  <Image src="https://icongr.am/fontawesome/whatsapp.svg?size=32&color=ffffff" />
+                }
               >
                 Completar pedido ({cart.length} productos)
               </Button>
