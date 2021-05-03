@@ -66,7 +66,8 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
                 as={motion.img}
                 cursor="pointer"
                 layoutId={product.image}
-                maxHeight={250}
+                maxHeight={150}
+                borderRadius={8}
                 objectFit="cover"
                 onClick={() => setSelectedImage(product.image)}
                 src={product.image}
@@ -74,6 +75,9 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
               <Stack spacing={1}>
                 <Text>{product.title}</Text>
                 <Text>{parseCurrency(product.price)}</Text>
+                <Text paddingBottom={5} paddingTop={5}>
+                  {parseCurrency(product.description)}
+                </Text>
               </Stack>
               <Button
                 onClick={() => setCart((cart) => cart.concat(product))}
